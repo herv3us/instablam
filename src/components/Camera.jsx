@@ -6,12 +6,6 @@ function Camera() {
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
 
-  const photo = {
-    src: '',
-    position: '',
-    date: '',
-  };
-
   const handleCameraClick = (object) => {};
 
   const handleCameraToggle = () => {
@@ -89,7 +83,13 @@ async function takePhoto() {
     const imageCapture = new imageCapture(stream.getVideoTracks()[0]);
     let blob = await imageCapture.takePhoto();
 
-    const object = {};
+    const date = new Date();
+
+    const photo = {
+      src: URL.createObjectURL(blob),
+      position: '',
+      date: `${date.getDate()} / ${date.getMonth()} / ${date.getFullYear()}`,
+    };
   } catch (error) {
     console.log('En error has accured.');
   }
