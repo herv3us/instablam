@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 import { MdCameraEnhance } from 'react-icons/md';
+import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
 function Camera() {
   const videoRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
 
-  const handleCameraClick = (object) => {};
+  const handleCameraClick = async () => {
+    const photo = await takePhoto();
+
+    console.log(photo);
+    return photo;
+  };
 
   const handleCameraToggle = () => {
     if (cameraIsOn) {
@@ -33,7 +39,7 @@ function Camera() {
           <video ref={videoRef}></video>
           {cameraIsOn ? (
             <button
-              onClick={handleCameraClick}
+              onClick={() => handleCameraClick()}
               className="camera-container_takePicBtn"
             >
               <MdCameraEnhance /> Take pic
@@ -49,48 +55,3 @@ function Camera() {
 }
 
 export default Camera;
-
-let stream = null;
-let facing = 'user';
-
-async function cameraOn(videoElement, done) {
-  const md = navigator.mediaDevices;
-  const constrains = {
-    video: { facingMode: facing, width: 375, height: 500 },
-  };
-  try {
-    stream = await md.getUserMedia(constrains);
-    videoElement.srcObject = stream;
-    videoElement.addEventListener('loadedmetadata', () => {
-      videoElement.play();
-      done();
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-async function cameraOff(videoElement, done) {
-  if (!stream) return;
-
-  let tracks = stream.getTracks();
-  tracks.forEach((track) => track.stop());
-  done();
-}
-
-async function takePhoto() {
-  try {
-    const imageCapture = new imageCapture(stream.getVideoTracks()[0]);
-    let blob = await imageCapture.takePhoto();
-
-    const date = new Date();
-
-    const photo = {
-      src: URL.createObjectURL(blob),
-      position: '',
-      date: `${date.getDate()} / ${date.getMonth()} / ${date.getFullYear()}`,
-    };
-  } catch (error) {
-    console.log('En error has accured.');
-  }
-}
