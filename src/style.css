@@ -9,6 +9,10 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #3f3d3d;
   text-align: center;
 }
@@ -21,8 +25,8 @@ body {
 }
 
 img {
-  margin-top: 2rem;
-  height: 6.5rem;
+  margin-top: 1.6rem;
+  height: 7rem;
 }
 
 .camera-container {

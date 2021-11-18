@@ -1,7 +1,7 @@
 function Head() {
   return (
     <div>
-      <img src="src/img/instablam.png" alt="Logo" />
+      <img src="src/img/instablam.png" alt="Instablam Logo" />
     </div>
   );
 }

@@ -6,6 +6,14 @@ function Camera() {
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
 
+  const photo = {
+    src: '',
+    position: '',
+    date: '',
+  };
+
+  const handleCameraClick = (object) => {};
+
   const handleCameraToggle = () => {
     if (cameraIsOn) {
       cameraOff(videoRef.current, () => {
@@ -30,7 +38,10 @@ function Camera() {
         <>
           <video ref={videoRef}></video>
           {cameraIsOn ? (
-            <button className="camera-container_takePicBtn">
+            <button
+              onClick={handleCameraClick}
+              className="camera-container_takePicBtn"
+            >
               <MdCameraEnhance /> Take pic
             </button>
           ) : null}
@@ -45,12 +56,13 @@ function Camera() {
 
 export default Camera;
 
-let stream = '';
+let stream = null;
+let facing = 'user';
 
 async function cameraOn(videoElement, done) {
   const md = navigator.mediaDevices;
   const constrains = {
-    video: { facingMode: 'user', width: 375, height: 500 },
+    video: { facingMode: facing, width: 375, height: 500 },
   };
   try {
     stream = await md.getUserMedia(constrains);
@@ -70,4 +82,15 @@ async function cameraOff(videoElement, done) {
   let tracks = stream.getTracks();
   tracks.forEach((track) => track.stop());
   done();
+}
+
+async function takePhoto() {
+  try {
+    const imageCapture = new imageCapture(stream.getVideoTracks()[0]);
+    let blob = await imageCapture.takePhoto();
+
+    const object = {};
+  } catch (error) {
+    console.log('En error has accured.');
+  }
 }
