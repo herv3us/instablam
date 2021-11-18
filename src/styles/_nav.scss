@@ -1,0 +1,25 @@
+.navbar {
+  & ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.3em;
+  }
+
+  &_link {
+    color: $primary-color;
+    text-decoration: none;
+    padding: 0.5em 0.9em;
+    border: 1px solid $primary-color;
+    border-radius: 0.2em;
+
+    &:hover {
+      border: 1px solid $primary-color;
+      color: $text-color;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+}
