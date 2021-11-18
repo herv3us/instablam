@@ -46,7 +46,7 @@ function Camera() {
             </button>
           ) : null}
           <button onClick={handleCameraToggle}>
-            {cameraIsOn ? 'Tun off camera' : 'Turn on camera'}
+            {cameraIsOn ? 'Turn off camera' : 'Turn on camera'}
           </button>
         </>
       ) : null}

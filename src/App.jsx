@@ -12,10 +12,13 @@ function App() {
           <Head />
         </header>
         <main>
-          <Camera />
-          {/* <Gallery /> */}
+          <Routes>
+            <Route path="/" exact element={<Camera />}></Route>
+            <Route path="/gallery" element={<Gallery />}></Route>
+          </Routes>
         </main>
         <footer>
+          {' '}
           <nav>
             <Nav />
           </nav>

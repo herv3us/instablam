@@ -1,0 +1,22 @@
+.gallery {
+  overflow: hidden;
+  padding: 1em;
+
+  & img {
+    height: 250px;
+    border: 0.5em solid $text-color;
+  }
+
+  &-list_item {
+    list-style-type: none;
+    margin-bottom: 0.6em;
+
+    & p {
+      color: $text-color;
+    }
+
+    & button {
+      @include button;
+    }
+  }
+}

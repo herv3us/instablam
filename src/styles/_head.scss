@@ -1,4 +1,6 @@
-img {
-  margin-top: 1.6rem;
-  height: 7rem;
+.logo {
+  & img {
+    margin-top: 1.6rem;
+    height: 7rem;
+  }
 }
