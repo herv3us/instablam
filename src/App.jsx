@@ -18,7 +18,6 @@ function App() {
           </Routes>
         </main>
         <footer>
-          {' '}
           <nav>
             <Nav />
           </nav>
