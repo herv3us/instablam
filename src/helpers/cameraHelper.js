@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 let stream = null;
 let facing = 'user';
 
@@ -38,6 +39,7 @@ async function takePhoto() {
       date: `${date.getDate()} / ${
         date.getMonth() + 1
       } / ${date.getFullYear()}`,
+      id: nanoid(10),
     };
     return photo;
   } catch (error) {
