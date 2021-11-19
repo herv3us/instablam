@@ -3,20 +3,14 @@ import SinglePhoto from './SinglePhoto';
 
 function Gallery({ gallery }) {
   const [flipped, setflipped] = useState(true);
-  const [onePhoto, setOnePhoto] = useState(null);
 
   const handleClick = (photo) => {
-    onePhoto ? null : setOnePhoto(photo);
-    console.log(photo, onePhoto);
-
     if (flipped) {
       setflipped(false);
     } else {
       setflipped(true);
     }
   };
-
-  useEffect(() => {}, [onePhoto]);
 
   return (
     <div className="gallery">
