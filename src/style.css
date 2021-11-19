@@ -66,6 +66,8 @@ body {
 }
 .gallery img {
   height: 250px;
+  width: 180px;
+  object-fit: cover;
   border: 0.5em solid #eee;
 }
 .gallery-list_item {

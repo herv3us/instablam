@@ -4,6 +4,8 @@
 
   & img {
     height: 250px;
+    width: 180px;
+    object-fit: cover;
     border: 0.5em solid $text-color;
   }
 
