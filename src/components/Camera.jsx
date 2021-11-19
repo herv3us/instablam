@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { MdCameraEnhance } from 'react-icons/md';
 import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
-function Camera() {
+function Camera({ gallery, setGallery }) {
   const videoRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
@@ -11,7 +11,10 @@ function Camera() {
     const photo = await takePhoto();
 
     console.log(photo);
-    return photo;
+    console.log(gallery);
+    let newGallery = [...gallery];
+    newGallery.splice(0, 0, photo);
+    setGallery(newGallery);
   };
 
   const handleCameraToggle = () => {

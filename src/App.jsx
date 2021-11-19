@@ -31,7 +31,11 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" exact element={<Camera />}></Route>
+            <Route
+              path="/"
+              exact
+              element={<Camera gallery={gallery} setGallery={setGallery} />}
+            ></Route>
             <Route
               path="/gallery"
               element={<Gallery gallery={gallery} />}
