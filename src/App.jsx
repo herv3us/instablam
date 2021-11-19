@@ -38,7 +38,7 @@ function App() {
             ></Route>
             <Route
               path="/gallery"
-              element={<Gallery gallery={gallery} />}
+              element={<Gallery gallery={gallery} setGallery={setGallery} />}
             ></Route>
           </Routes>
         </main>

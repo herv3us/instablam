@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SinglePhoto from './SinglePhoto';
 
-function Gallery({ gallery }) {
+function Gallery({ gallery, setGallery }) {
   const [flipped, setflipped] = useState(true);
 
   const handleClick = (photo) => {
@@ -10,6 +10,16 @@ function Gallery({ gallery }) {
     } else {
       setflipped(true);
     }
+  };
+
+  const handleDelete = (id) => {
+    let newGallery = [...gallery];
+    newGallery.map((photo) => {
+      if (photo.id === id) {
+        newGallery.pop(photo);
+        setGallery(newGallery);
+      }
+    });
   };
 
   return (
@@ -27,7 +37,7 @@ function Gallery({ gallery }) {
               img={img}
               flipped={flipped}
             />
-            <button>Delete</button>
+            <button onClick={() => handleDelete(img.id)}>Delete</button>
           </li>
         ))}
       </ul>
