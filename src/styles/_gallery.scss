@@ -1,24 +1,61 @@
 .gallery {
   overflow: hidden;
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  & img {
+.gallery-list_item {
+  list-style-type: none;
+  margin-bottom: 0.6em;
+  position: relative;
+
+  & p {
+    color: $text-color;
+  }
+
+  & button {
+    @include button;
+  }
+
+  &-photo {
     height: 250px;
     width: 180px;
     object-fit: cover;
     border: 0.5em solid $text-color;
-  }
+    display: block;
 
-  &-list_item {
-    list-style-type: none;
-    margin-bottom: 0.6em;
+    &-back {
+      background-color: $primary-color;
+      width: 180px;
+      height: 250px;
 
-    & p {
-      color: $text-color;
-    }
-
-    & button {
-      @include button;
+      & p {
+        padding-top: 2em;
+      }
     }
   }
+}
+
+.front-side {
+  position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+}
+
+.flipped .front-side {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.back-side {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .back-side {
+  transform: rotateY(90deg);
+  transition-delay: 0.2s;
 }

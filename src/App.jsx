@@ -17,7 +17,7 @@ function App() {
     },
     {
       src: 'https://images.unsplash.com/photo-1455762279210-ae6b56c7ad7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80',
-      position: 'Göteborg',
+      position: 'Lund',
       date: '2021-11-18',
       id: nanoid(10),
     },

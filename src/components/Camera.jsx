@@ -9,9 +9,6 @@ function Camera({ gallery, setGallery }) {
 
   const handleCameraClick = async () => {
     const photo = await takePhoto();
-
-    console.log(photo);
-    console.log(gallery);
     let newGallery = [...gallery];
     newGallery.splice(0, 0, photo);
     setGallery(newGallery);
