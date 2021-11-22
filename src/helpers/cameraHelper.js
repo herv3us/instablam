@@ -57,7 +57,6 @@ async function takePhoto(videoElement, canvasElement) {
           await videoElement.play();
           context.drawImage(videoElement, 0, 0, videoWidth, videoHeight);
           let data = canvasElement.toDataURL('image/png');
-
           const date = new Date();
           const photo = {
             src: data,
