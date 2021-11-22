@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
@@ -22,6 +22,36 @@ function App() {
       id: nanoid(10),
     },
   ]);
+
+  // const [canUseLocation, setCanUseLocation] = useState(false);
+  // const [pos, setPos] = useState(null);
+
+  // useEffect(() => {
+  //   if ('geolocation' in navigator) {
+  //     const geo = navigator.geolocation;
+  //     geo.getCurrentPosition((pos) => {
+  //       setPos(pos.coords);
+  //       setCanUseLocation(true);
+  //     });
+  //     console.log(pos);
+  //   }
+  // }, []);
+
+  // async function findPosition(lat, long) {
+  //   try {
+  //     const res = await fetch(
+  //       `https://geocode.xyz/${lat},${long}?geoit=json&auth=446968249876491397676x26597`
+  //     );
+  //     const data = await res.json();
+  //     if (data.error) {
+  //       console.log('Could not find any data');
+  //       return null;
+  //     }
+  //     console.log('Data found: ' + data);
+  //   } catch (error) {
+  //     console.log('New error found', +error.message);
+  //   }
+  // }
 
   return (
     <BrowserRouter>
@@ -53,3 +83,9 @@ function App() {
 }
 
 export default App;
+
+async function onSuccess(pos) {
+  console.log('Current position: ', +pos);
+  const adress = await findPosition(pos.coords.latitude, pos.coords.longitude);
+  console.log('Här är de undefined? ', +adress);
+}

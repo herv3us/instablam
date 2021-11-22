@@ -27,23 +27,53 @@ async function cameraOff(videoElement, done) {
   done();
 }
 
-async function takePhoto() {
-  try {
-    const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
-    let blob = await imageCapture.takePhoto();
+async function takePhoto(videoElement, canvasElement) {
+  if ('ImageCapture' in window) {
+    try {
+      const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+      let blob = await imageCapture.takePhoto();
+      const date = new Date();
+      const photo = {
+        src: URL.createObjectURL(blob),
+        position: '',
+        date: `${date.getDate()} / ${
+          date.getMonth() + 1
+        } / ${date.getFullYear()}`,
+        id: nanoid(10),
+      };
+      return photo;
+    } catch (error) {
+      console.log('En error has accured.' + error.message);
+    }
+  } else {
+    const context = canvasElement.getContext('2d');
+    videoElement.srcObject = stream;
+    return new Promise((res, rej) => {
+      videoElement.addEventListener('loadeddata', async () => {
+        const { videoWidth, videoHeight } = videoElement;
+        canvasElement.width = videoWidth;
+        canvasElement.height = videoHeight;
+        try {
+          await videoElement.play();
+          context.drawImage(videoElement, 0, 0, videoWidth, videoHeight);
+          let data = canvasElement.toDataURL('image/png');
 
-    const date = new Date();
-    const photo = {
-      src: URL.createObjectURL(blob),
-      position: '',
-      date: `${date.getDate()} / ${
-        date.getMonth() + 1
-      } / ${date.getFullYear()}`,
-      id: nanoid(10),
-    };
-    return photo;
-  } catch (error) {
-    console.log('En error has accured.' + error.message);
+          const date = new Date();
+          const photo = {
+            src: data,
+            position: '',
+            date: `${date.getDate()} / ${
+              date.getMonth() + 1
+            } / ${date.getFullYear()}`,
+            id: nanoid(10),
+          };
+          console.log(photo);
+          return photo;
+        } catch (error) {
+          rej(error);
+        }
+      });
+    });
   }
 }
 

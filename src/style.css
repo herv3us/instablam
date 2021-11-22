@@ -49,15 +49,22 @@ body {
   margin-top: 0.3em;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transform: scale(0.9);
 }
 .camera-container_takePicBtn {
   position: absolute;
   bottom: 60px;
-  left: 125px;
+  left: 35%;
   z-index: 1000;
   font-size: 1rem;
   padding: 0.35rem 0.5rem !important;
+}
+.camera-container canvas {
+  position: absolute;
+  border: 1px solid black;
+  height: 500px;
+  width: 375px;
+  left: 0px;
+  border: 0.5em solid #fff;
 }
 
 .gallery {
@@ -88,7 +95,6 @@ body {
   margin-top: 0.3em;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transform: scale(0.9);
 }
 .gallery-list_item-photo {
   height: 250px;
@@ -104,6 +110,15 @@ body {
 }
 .gallery-list_item-photo-back p {
   padding-top: 2em;
+}
+
+.download {
+  color: #eee;
+  font-size: 1.2;
+  text-decoration: none;
+}
+.download:hover {
+  color: #3f3d3d;
 }
 
 .front-side {

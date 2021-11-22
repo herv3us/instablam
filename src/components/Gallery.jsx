@@ -11,7 +11,7 @@ function Gallery({ gallery, setGallery }) {
       <ul className="gallery-list">
         {gallery.map((img) => (
           <li className="gallery-list_item" key={img.id}>
-            <SinglePhoto key={img.id} img={img} />
+            <SinglePhoto img={img} />
             <button onClick={() => handleDelete(img.id)}>Delete</button>
           </li>
         ))}

@@ -18,6 +18,15 @@ function SinglePhoto({ img }) {
         <p>
           {img.position} - {img.date}
         </p>
+        <p>
+          <a
+            href={img.src}
+            download="Picture-from-Instablam"
+            className="download"
+          >
+            Click to download
+          </a>
+        </p>
       </div>
     </div>
   );

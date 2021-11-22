@@ -4,11 +4,12 @@ import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
 function Camera({ gallery, setGallery }) {
   const videoRef = useRef(null);
+  const canvasRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
 
   const handleCameraClick = async () => {
-    const photo = await takePhoto();
+    const photo = await takePhoto(videoRef.current, canvasRef.current);
     let newGallery = [...gallery];
     newGallery.splice(0, 0, photo);
     setGallery(newGallery);
@@ -45,6 +46,7 @@ function Camera({ gallery, setGallery }) {
               <MdCameraEnhance /> Take pic
             </button>
           ) : null}
+          <canvas ref={canvasRef}></canvas>
           <button onClick={handleCameraToggle}>
             {cameraIsOn ? 'Turn off camera' : 'Turn on camera'}
           </button>
