@@ -6,6 +6,7 @@ import Camera from './components/Camera.jsx';
 import Gallery from './components/Gallery.jsx';
 import Head from './components/Head';
 import Nav from './components/Nav';
+import GeoModal from './components/GeoModal.jsx';
 
 function App() {
   const [gallery, setGallery] = useState([
@@ -26,18 +27,26 @@ function App() {
   const [canUseLocation, setCanUseLocation] = useState(false);
   const [pos, setPos] = useState(null);
   const [location, setLocation] = useState(null);
+  const [showModal, setShowModal] = useState(true);
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
-    if ('geolocation' in navigator) {
-      const geo = navigator.geolocation;
-      geo.getCurrentPosition((pos) => {
-        setPos(pos.coords);
-        setCanUseLocation(true);
-      });
-    } else {
-      console.log('No location found');
+    if (canUseLocation) {
+      if ('geolocation' in navigator) {
+        const geo = navigator.geolocation;
+        geo.getCurrentPosition((pos) => {
+          setPos(pos.coords);
+          setCanUseLocation(true);
+          console.log('Hej');
+        });
+      } else {
+        console.log('No location found');
+      }
     }
-  }, [pos]);
+  }, [canUseLocation]);
 
   async function onSuccess(lat, long) {
     console.log(lat, long);
@@ -50,7 +59,7 @@ function App() {
     if (canUseLocation) {
       onSuccess(pos.latitude, pos.longitude);
     }
-  }, [canUseLocation]);
+  }, [pos]);
 
   return (
     <BrowserRouter>
@@ -76,6 +85,30 @@ function App() {
               element={<Gallery gallery={gallery} setGallery={setGallery} />}
             ></Route>
           </Routes>
+
+          {showModal && (
+            <GeoModal>
+              <h3>
+                Would you let me find <br /> your location?
+              </h3>
+              <button
+                onClick={() => {
+                  setCanUseLocation(true);
+                  handleClose();
+                }}
+              >
+                Sure thing
+              </button>
+              <button
+                onClick={() => {
+                  setCanUseLocation(false);
+                  handleClose();
+                }}
+              >
+                Never!
+              </button>
+            </GeoModal>
+          )}
         </main>
         <footer>
           <nav>
