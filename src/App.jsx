@@ -27,7 +27,13 @@ function App() {
   const [canUseLocation, setCanUseLocation] = useState(false);
   const [pos, setPos] = useState(null);
   const [location, setLocation] = useState(null);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     if (canUseLocation) {
@@ -35,7 +41,7 @@ function App() {
         const geo = navigator.geolocation;
         geo.getCurrentPosition((pos) => {
           setPos(pos.coords);
-          setCanUseLocation(true);
+          // setCanUseLocation(true);
         });
       } else {
         console.log('No location found');
@@ -83,7 +89,7 @@ function App() {
           {showModal && (
             <GeoModal>
               <h3>
-                Would you let me find <br /> your location?
+                Would you let me use <br /> your location?
               </h3>
               <button
                 onClick={() => {
