@@ -16,7 +16,7 @@ function SinglePhoto({ img }) {
       />
       <div className="gallery-list_item-photo-back back-side">
         <p>
-          {img.position} - {img.date}
+          {img.position} - <br /> {img.date}
         </p>
         <p>
           <a

@@ -37,7 +37,7 @@ async function takePhoto(videoElement, canvasElement, location) {
 
       const photo = {
         src: URL.createObjectURL(blob),
-        position: location,
+        position: location ? location : 'No location found',
         date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
         id: nanoid(10),
       };
@@ -60,10 +60,10 @@ async function takePhoto(videoElement, canvasElement, location) {
           const date = new Date();
           const photo = {
             src: data,
-            position: '',
-            date: `${date.getDate()} / ${
+            position: location ? location : 'No location found',
+            date: `${date.getDate()}/${
               date.getMonth() + 1
-            } / ${date.getFullYear()}`,
+            }/${date.getFullYear()}`,
             id: nanoid(10),
           };
           console.log(photo);

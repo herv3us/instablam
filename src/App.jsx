@@ -43,7 +43,7 @@ function App() {
     console.log(lat, long);
     const adress = await findPosition(lat, long);
     setLocation(adress.name);
-    console.log(adress);
+    console.log(adress.name);
   }
 
   useEffect(() => {
