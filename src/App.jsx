@@ -18,8 +18,8 @@ function App() {
     },
     {
       src: 'https://images.unsplash.com/photo-1455762279210-ae6b56c7ad7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80',
-      position: 'Lund',
-      date: '18/11/2021',
+      position: 'London',
+      date: '11/10/2021',
       id: nanoid(10),
     },
   ]);
@@ -28,10 +28,6 @@ function App() {
   const [pos, setPos] = useState(null);
   const [location, setLocation] = useState(null);
   const [showModal, setShowModal] = useState(true);
-
-  const handleClose = () => {
-    setShowModal(false);
-  };
 
   useEffect(() => {
     if (canUseLocation) {
@@ -92,7 +88,7 @@ function App() {
               <button
                 onClick={() => {
                   setCanUseLocation(true);
-                  handleClose();
+                  setShowModal(false);
                 }}
               >
                 Sure thing
@@ -100,7 +96,7 @@ function App() {
               <button
                 onClick={() => {
                   setCanUseLocation(false);
-                  handleClose();
+                  setShowModal(false);
                 }}
               >
                 Never!
