@@ -40,7 +40,6 @@ function App() {
         geo.getCurrentPosition((pos) => {
           setPos(pos.coords);
           setCanUseLocation(true);
-          console.log('Hej');
         });
       } else {
         console.log('No location found');
@@ -49,7 +48,6 @@ function App() {
   }, [canUseLocation]);
 
   async function onSuccess(lat, long) {
-    console.log(lat, long);
     const adress = await findPosition(lat, long);
     setLocation(adress.name);
     console.log(adress.name);
@@ -132,7 +130,6 @@ async function findPosition(lat, long) {
       console.log('Could not find any data');
       return null;
     } else {
-      console.log('Data found: ' + data.osmtags.name);
       return data.osmtags;
     }
   } catch (error) {

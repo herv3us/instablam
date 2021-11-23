@@ -9,13 +9,13 @@
 
 .geomodal {
   padding: 50px;
-  max-width: 370px;
-  margin: 200px auto;
+  max-width: 360px;
+  margin: 270px auto;
   background-color: $background;
-  border-radius: 10px;
   font-family: inherit;
   text-transform: uppercase;
-  border: 3px solid $border;
+  border: 10px solid $primary-color;
+  border-radius: 4px;
   font-size: 0.8em;
 
   & h3 {
