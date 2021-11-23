@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MdExplore } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 
 import Camera from './components/Camera.jsx';
@@ -67,7 +68,10 @@ function App() {
         <header>
           <Head />
         </header>
-        <main>
+        <main className="main">
+          <button className="main-showModal" onClick={() => setShowModal(true)}>
+            <MdExplore />
+          </button>
           <Routes>
             <Route
               path="/"

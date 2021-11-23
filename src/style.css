@@ -24,6 +24,22 @@ body {
   width: 375px;
 }
 
+.main {
+  position: relative;
+}
+.main-showModal {
+  position: absolute;
+  top: -45px;
+  right: 10px;
+  padding: 10px;
+  font-size: 1.6rem;
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  cursor: pointer;
+  color: #d27094;
+}
+
 .logo img {
   margin-top: 1.6rem;
   height: 7rem;
