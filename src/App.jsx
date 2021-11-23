@@ -42,7 +42,6 @@ function App() {
         const geo = navigator.geolocation;
         geo.getCurrentPosition((pos) => {
           setPos(pos.coords);
-          // setCanUseLocation(true);
         });
       } else {
         console.log('No location found');
