@@ -27,18 +27,18 @@ async function cameraOff(videoElement, done) {
   done();
 }
 
-async function takePhoto(videoElement, canvasElement) {
+async function takePhoto(videoElement, canvasElement, location) {
   if ('ImageCapture' in window) {
     try {
       const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
       let blob = await imageCapture.takePhoto();
+
       const date = new Date();
+
       const photo = {
         src: URL.createObjectURL(blob),
-        position: '',
-        date: `${date.getDate()} / ${
-          date.getMonth() + 1
-        } / ${date.getFullYear()}`,
+        position: location,
+        date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
         id: nanoid(10),
       };
       return photo;

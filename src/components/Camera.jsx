@@ -2,14 +2,18 @@ import { useState, useEffect, useRef } from 'react';
 import { MdCameraEnhance } from 'react-icons/md';
 import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
-function Camera({ gallery, setGallery }) {
+function Camera({ gallery, setGallery, location }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
 
   const handleCameraClick = async () => {
-    const photo = await takePhoto(videoRef.current, canvasRef.current);
+    const photo = await takePhoto(
+      videoRef.current,
+      canvasRef.current,
+      location
+    );
     let newGallery = [...gallery];
     newGallery.splice(0, 0, photo);
     setGallery(newGallery);
