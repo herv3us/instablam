@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { MdCameraEnhance } from 'react-icons/md';
+import { MdCameraEnhance, MdAlarm } from 'react-icons/md';
 import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
 function Camera({ gallery, setGallery, location }) {
@@ -7,8 +7,14 @@ function Camera({ gallery, setGallery, location }) {
   const canvasRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
   const [cameraIsOn, setCameraIsOn] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [addedToGalleryMessage, setAddedToGalleryMessage] = useState('');
 
   const handleCameraClick = async () => {
+    setTimeout(() => {
+      setIsActive(true);
+      setAddedToGalleryMessage('Photo added gallery');
+    }, 500);
     const photo = await takePhoto(
       videoRef.current,
       canvasRef.current,
@@ -17,6 +23,18 @@ function Camera({ gallery, setGallery, location }) {
     let newGallery = [...gallery];
     newGallery.splice(0, 0, photo);
     setGallery(newGallery);
+
+    setTimeout(() => {
+      setIsActive(false);
+      setAddedToGalleryMessage('');
+    }, 1500);
+  };
+
+  const handleDelayClick = async () => {
+    setTimeout(() => {
+      handleCameraClick();
+      console.log('Click');
+    }, 3000);
   };
 
   const handleCameraToggle = () => {
@@ -39,16 +57,38 @@ function Camera({ gallery, setGallery, location }) {
 
   return (
     <div className="camera-container">
+      <span
+        className={
+          isActive
+            ? 'camera-container-message'
+            : 'camera-container-message--hide'
+        }
+      >
+        {addedToGalleryMessage || null}
+      </span>
       {canUseMd ? (
         <>
           <video ref={videoRef} playsInline autoPlay></video>
           {cameraIsOn ? (
-            <button
-              onClick={() => handleCameraClick()}
-              className="camera-container_takePicBtn"
-            >
-              <MdCameraEnhance /> Take pic
-            </button>
+            <div>
+              <button
+                className="camera-container_3s"
+                title="Photo taken with 3 sec delay"
+                onClick={() => handleDelayClick()}
+              >
+                <MdAlarm />
+              </button>
+              <button
+                onClick={() => handleCameraClick()}
+                className={
+                  isActive
+                    ? 'camera-container_takePicBtn'
+                    : 'camera-container_takePicBtn modal-hide'
+                }
+              >
+                <MdCameraEnhance /> Take pic
+              </button>
+            </div>
           ) : null}
           <canvas ref={canvasRef} className="hide"></canvas>
           <button onClick={handleCameraToggle}>

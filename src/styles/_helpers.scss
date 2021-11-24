@@ -19,7 +19,7 @@ $primary-text: 'Montserrat', sans-serif;
   letter-spacing: 0.1em;
   cursor: pointer;
   &:hover {
-    background-color: transparent;
+    background-color: $background;
     border: 1px solid $primary-color;
     color: $primary-color;
   }

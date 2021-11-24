@@ -67,17 +67,25 @@ body {
   cursor: pointer;
 }
 .camera-container button:hover {
-  background-color: transparent;
+  background-color: #3f3d3d;
   border: 1px solid #d27094;
   color: #d27094;
 }
 .camera-container_takePicBtn {
   position: absolute;
   bottom: 60px;
-  left: 35%;
+  left: 30%;
   z-index: 1000;
   font-size: 1rem;
-  padding: 0.35rem 0.5rem !important;
+}
+.camera-container_3s {
+  position: absolute;
+  bottom: 50px;
+  left: 3%;
+  z-index: 1000;
+  font-size: 1rem;
+  background-color: transparent !important;
+  border: none !important;
 }
 .camera-container canvas {
   position: absolute;
@@ -87,6 +95,24 @@ body {
   object-fit: cover;
   left: 0px;
   border: 0.5em solid #fff;
+}
+.camera-container-message {
+  position: absolute;
+  right: 30px;
+  bottom: 94px;
+  text-align: center;
+  width: 8rem;
+  font-size: 0.6em;
+  padding: 0.25em 0;
+  background-color: #d27094;
+  color: #eee;
+  border-radius: 0.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.3s;
+  z-index: 2000;
+}
+.camera-container-message--hide {
+  display: none;
 }
 
 .hide {
@@ -130,7 +156,7 @@ body {
   cursor: pointer;
 }
 .gallery-list_item button:hover {
-  background-color: transparent;
+  background-color: #3f3d3d;
   border: 1px solid #d27094;
   color: #d27094;
 }
@@ -217,7 +243,7 @@ body {
   margin: 10px 0 0 10px;
 }
 .geomodal button:hover {
-  background-color: transparent;
+  background-color: #3f3d3d;
   border: 1px solid #d27094;
   color: #d27094;
 }
