@@ -19,6 +19,26 @@ export default defineConfig({
         description:
           'App to take photos and look at previouse pictures in the gallery.',
         theme_color: '#eee',
+        display: 'standalone',
+        start_url: 'index.html',
+        icons: [
+          {
+            src: '192.png',
+            sizes: '192x192',
+            type: 'images/png',
+          },
+          {
+            src: '512.png',
+            sizes: '512x512',
+            type: 'images/png',
+          },
+          {
+            src: '512-any.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
       },
     }),
   ],
