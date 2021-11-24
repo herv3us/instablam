@@ -5,6 +5,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &-list {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1em;
+    }
+  }
 }
 
 .gallery-list_item {

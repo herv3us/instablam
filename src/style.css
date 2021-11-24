@@ -101,6 +101,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .gallery-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+  }
+}
 
 .gallery-list_item {
   list-style-type: none;

@@ -41,7 +41,7 @@ function Camera({ gallery, setGallery, location }) {
     <div className="camera-container">
       {canUseMd ? (
         <>
-          <video ref={videoRef}></video>
+          <video ref={videoRef} playsInline autoPlay></video>
           {cameraIsOn ? (
             <button
               onClick={() => handleCameraClick()}
