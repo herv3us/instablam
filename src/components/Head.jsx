@@ -1,7 +1,9 @@
+import logo from '../img/Instablam.png';
+
 function Head() {
   return (
     <div className="logo">
-      <img src="src/img/instablam.png" alt="Instablam Logo" />
+      <img src={logo} alt="Instablam Logo" />
     </div>
   );
 }

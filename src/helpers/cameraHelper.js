@@ -53,10 +53,12 @@ async function takePhoto(videoElement, canvasElement, location) {
         const { videoWidth, videoHeight } = videoElement;
         canvasElement.width = videoWidth;
         canvasElement.height = videoHeight;
+
         try {
           await videoElement.play();
           context.drawImage(videoElement, 0, 0, videoWidth, videoHeight);
           let data = canvasElement.toDataURL('image/png');
+
           const date = new Date();
           const photo = {
             src: data,
@@ -66,8 +68,7 @@ async function takePhoto(videoElement, canvasElement, location) {
             }/${date.getFullYear()}`,
             id: nanoid(10),
           };
-          console.log(photo);
-          return photo;
+          res(photo);
         } catch (error) {
           rej(error);
         }

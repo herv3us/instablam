@@ -68,7 +68,11 @@ function App() {
           <Head />
         </header>
         <main className="main">
-          <button className="main-showModal" onClick={() => setShowModal(true)}>
+          <button
+            className="main-showModal"
+            onClick={() => setShowModal(true)}
+            title="Location"
+          >
             <MdExplore />
           </button>
           <Routes>
@@ -79,7 +83,7 @@ function App() {
                 <Camera
                   gallery={gallery}
                   setGallery={setGallery}
-                  location={location}
+                  location={canUseLocation ? location : 'No location found'}
                 />
               }
             ></Route>
