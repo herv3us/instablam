@@ -50,7 +50,7 @@ function Camera({ gallery, setGallery, location }) {
               <MdCameraEnhance /> Take pic
             </button>
           ) : null}
-          <canvas ref={canvasRef}></canvas>
+          <canvas ref={canvasRef} className="hide"></canvas>
           <button onClick={handleCameraToggle}>
             {cameraIsOn ? 'Turn off camera' : 'Turn on camera'}
           </button>
