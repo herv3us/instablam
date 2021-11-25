@@ -84,6 +84,8 @@ function App() {
                   gallery={gallery}
                   setGallery={setGallery}
                   location={canUseLocation ? location : 'No location found'}
+                  showModal={showModal}
+                  setShowModal={setShowModal}
                 />
               }
             ></Route>

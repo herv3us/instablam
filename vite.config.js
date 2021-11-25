@@ -20,7 +20,7 @@ export default defineConfig({
           'App to take photos and look at previouse pictures in the gallery.',
         theme_color: '#eee',
         display: 'standalone',
-        start_url: 'index.html',
+        start_url: '.',
         icons: [
           {
             src: '192.png',

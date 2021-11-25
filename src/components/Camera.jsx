@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { MdCameraEnhance, MdAlarm } from 'react-icons/md';
 import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
 
-function Camera({ gallery, setGallery, location }) {
+function Camera({ gallery, setGallery, location, showModal, setShowModal }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [canUseMd, setCanUseMd] = useState(false);
