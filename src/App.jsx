@@ -11,6 +11,9 @@ import Nav from './components/Nav';
 import Modal from './components/Modal.jsx';
 import GeolocationModal from './components/GeolocationModal.jsx';
 
+const controller = new AbortController();
+const signal = controller.signal;
+
 function App() {
   const [gallery, setGallery] = useState([
     {

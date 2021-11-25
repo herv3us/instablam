@@ -23,6 +23,17 @@ body {
   height: 100vh;
   width: 375px;
 }
+@media (max-width: 355px) {
+  .App {
+    max-width: 340px;
+  }
+}
+@media (min-width: 768px) {
+  .App {
+    min-width: 768px;
+    height: 100vh;
+  }
+}
 
 .main {
   position: relative;
@@ -39,6 +50,11 @@ body {
   cursor: pointer;
   color: #d27094;
 }
+@media (min-width: 768px) {
+  .main-showModal {
+    right: 170px;
+  }
+}
 
 .logo img {
   margin-top: 1.6rem;
@@ -53,6 +69,19 @@ body {
   width: 375px;
   border: 0.5em solid #fff;
   background-color: #3f3d3d;
+  margin: 0 auto;
+}
+@media (max-width: 355px) {
+  .camera-container video {
+    height: 420px;
+    width: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .camera-container video {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .camera-container button {
   background-color: #d27094;
@@ -87,15 +116,6 @@ body {
   background-color: transparent !important;
   border: none !important;
 }
-.camera-container canvas {
-  position: absolute;
-  border: 1px solid black;
-  height: 500px;
-  width: 375px;
-  object-fit: cover;
-  left: 0px;
-  border: 0.5em solid #fff;
-}
 .camera-container-message {
   position: absolute;
   right: 30px;
@@ -121,7 +141,6 @@ body {
 
 .gallery {
   overflow: hidden;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,7 +156,7 @@ body {
 
 .gallery-list_item {
   list-style-type: none;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.8em;
   position: relative;
 }
 .gallery-list_item p {

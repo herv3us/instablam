@@ -1,6 +1,5 @@
 .gallery {
   overflow: hidden;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +16,7 @@
 
 .gallery-list_item {
   list-style-type: none;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.8em;
   position: relative;
 
   & p {

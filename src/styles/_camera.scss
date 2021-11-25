@@ -5,6 +5,17 @@
     width: 375px;
     border: 0.5em solid #fff;
     background-color: $background;
+    margin: 0 auto;
+
+    @media (max-width: 355px) {
+      height: 420px;
+      width: 300px;
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   & button {
@@ -27,16 +38,6 @@
     font-size: 1rem;
     background-color: transparent !important;
     border: none !important;
-  }
-
-  & canvas {
-    position: absolute;
-    border: 1px solid black;
-    height: 500px;
-    width: 375px;
-    object-fit: cover;
-    left: 0px;
-    border: 0.5em solid #fff;
   }
 
   &-message {
