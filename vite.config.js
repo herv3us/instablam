@@ -18,9 +18,9 @@ export default defineConfig({
         short_name: 'Instablam',
         description:
           'App to take photos and look at previouse pictures in the gallery.',
-        theme_color: '#eee',
+        theme_color: 'rgb(63, 61, 61)',
         display: 'standalone',
-        start_url: '.',
+        start_url: '/index.html?utm_source=homescreen',
         icons: [
           {
             src: '192.png',

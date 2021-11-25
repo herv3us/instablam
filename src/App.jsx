@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MdExplore } from 'react-icons/md';
 import { nanoid } from 'nanoid';
+import { onSuccess } from './helpers/geoHelper.js';
 
 import Camera from './components/Camera.jsx';
 import Gallery from './components/Gallery.jsx';
 import Head from './components/Head';
 import Nav from './components/Nav';
-import GeoModal from './components/GeoModal.jsx';
+import Modal from './components/Modal.jsx';
+import GeolocationModal from './components/GeolocationModal.jsx';
 
 function App() {
   const [gallery, setGallery] = useState([
@@ -49,15 +51,9 @@ function App() {
     }
   }, [canUseLocation]);
 
-  async function onSuccess(lat, long) {
-    const adress = await findPosition(lat, long);
-    setLocation(adress.name);
-    console.log(adress.name);
-  }
-
   useEffect(() => {
     if (canUseLocation) {
-      onSuccess(pos.latitude, pos.longitude);
+      onSuccess(setLocation, pos.latitude, pos.longitude);
     }
   }, [pos]);
 
@@ -96,27 +92,12 @@ function App() {
           </Routes>
 
           {showModal && (
-            <GeoModal>
-              <h3>
-                Would you let me use <br /> your location?
-              </h3>
-              <button
-                onClick={() => {
-                  setCanUseLocation(true);
-                  setShowModal(false);
-                }}
-              >
-                Sure thing
-              </button>
-              <button
-                onClick={() => {
-                  setCanUseLocation(false);
-                  setShowModal(false);
-                }}
-              >
-                Never!
-              </button>
-            </GeoModal>
+            <Modal>
+              <GeolocationModal
+                setCanUseLocation={setCanUseLocation}
+                setShowModal={setShowModal}
+              />
+            </Modal>
           )}
         </main>
         <footer>
@@ -130,20 +111,3 @@ function App() {
 }
 
 export default App;
-
-async function findPosition(lat, long) {
-  try {
-    const res = await fetch(
-      `https://geocode.xyz/${lat},${long}?geoit=json&auth=446968249876491397676x26597`
-    );
-    const data = await res.json();
-    if (data.error) {
-      console.log('Could not find any data');
-      return null;
-    } else {
-      return data.osmtags;
-    }
-  } catch (error) {
-    console.log('New error found ' + error.message);
-  }
-}
