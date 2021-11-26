@@ -81,7 +81,7 @@ function Camera({ gallery, setGallery, location }) {
               >
                 <MdAlarm />
               </button>
-              <p>{count}</p>
+              {/* <p>{count}</p> */}
               <button
                 onClick={() => handleCameraClick()}
                 className={
