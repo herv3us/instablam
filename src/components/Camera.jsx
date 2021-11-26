@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { MdCameraEnhance, MdAlarm } from 'react-icons/md';
 import { cameraOn, cameraOff, takePhoto } from '../helpers/cameraHelper.js';
+import { useNotifications } from '../helpers/notis.js';
 
 function Camera({ gallery, setGallery, location }) {
   const videoRef = useRef(null);
@@ -35,6 +36,7 @@ function Camera({ gallery, setGallery, location }) {
     setTimeout(() => {
       handleCameraClick();
       console.log('Click');
+      useNotifications();
     }, 3000);
   };
 

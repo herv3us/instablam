@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MdExplore } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { onSuccess } from './helpers/geoHelper.js';
+import {} from './helpers/notis.js';
 
 import Camera from './components/Camera.jsx';
 import Gallery from './components/Gallery.jsx';
@@ -31,6 +32,13 @@ function App() {
   const [pos, setPos] = useState(null);
   const [location, setLocation] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    Notification.requestPermission().then((result) => {
+      // if( result === 'granted' )
+      // 	setCanUse(true)
+    });
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
