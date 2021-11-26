@@ -9,6 +9,7 @@ function Camera({ gallery, setGallery, location }) {
   const [cameraIsOn, setCameraIsOn] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [addedToGalleryMessage, setAddedToGalleryMessage] = useState('');
+  const [count, setCount] = useState(3);
 
   const handleCameraClick = async () => {
     setTimeout(() => {
@@ -78,6 +79,7 @@ function Camera({ gallery, setGallery, location }) {
               >
                 <MdAlarm />
               </button>
+              <p>{count}</p>
               <button
                 onClick={() => handleCameraClick()}
                 className={
