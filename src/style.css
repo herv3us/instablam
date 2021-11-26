@@ -77,7 +77,7 @@ body {
   background-color: #3f3d3d;
   margin: 0 auto;
 }
-@media screen and (max-width: 355px), screen and (max-height: 668px) {
+@media screen and (max-width: 355px), screen and (max-height: 780px) {
   .camera-container video {
     height: 300px;
     width: 225px;
