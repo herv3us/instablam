@@ -33,12 +33,12 @@ function App() {
   const [location, setLocation] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    Notification.requestPermission().then((result) => {
-      // if( result === 'granted' )
-      // 	setCanUse(true)
-    });
-  }, []);
+  // useEffect(() => {
+  //   Notification.requestPermission().then((result) => {
+  //     // if( result === 'granted' )
+  //     // 	setCanUse(true)
+  //   });
+  // }, []);
 
   useEffect(() => {
     setTimeout(() => {
