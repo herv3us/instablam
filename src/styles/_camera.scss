@@ -7,9 +7,9 @@
     background-color: $background;
     margin: 0 auto;
 
-    @media (max-width: 355px) {
-      height: 420px;
-      width: 300px;
+    @media screen and (max-width: 355px), screen and (max-height: 668px) {
+      height: 300px;
+      width: 225px;
     }
 
     @media (min-width: 768px) {
@@ -26,8 +26,12 @@
     position: absolute;
     bottom: 60px;
     left: 30%;
-    z-index: 1000;
+    z-index: 500;
     font-size: 1rem;
+
+    @media (min-width: 768px) {
+      left: 41%;
+    }
   }
 
   &_3s {
@@ -38,6 +42,10 @@
     font-size: 1rem;
     background-color: transparent !important;
     border: none !important;
+
+    @media (min-width: 768px) {
+      left: 28%;
+    }
   }
 
   &-message {

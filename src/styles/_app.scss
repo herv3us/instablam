@@ -22,8 +22,9 @@ body {
   height: 100vh;
   width: 375px;
 
-  @media (max-width: 355px) {
-    max-width: 340px;
+  @media screen and (max-width: 355px), screen and (max-height: 668px) {
+    grid-template-rows: 26% auto 10%;
+    width: 340px;
   }
 
   @media (min-width: 768px) {
@@ -43,12 +44,16 @@ body {
     font-size: 1.6rem;
     background-color: transparent;
     border: none;
-    z-index: 100;
+    z-index: 3000;
     cursor: pointer;
     color: $primary-color;
 
     @media (min-width: 768px) {
       right: 170px;
+    }
+
+    @media screen and (max-width: 355px), screen and (max-height: 660px) {
+      right: 25px;
     }
   }
 }
